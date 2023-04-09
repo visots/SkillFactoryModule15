@@ -4,12 +4,23 @@
     {
         static void Main(string[] args)
         {
-            string text = "Мама мыла раму, а папа лежал на диване.";
-            char[] except = new char[] { ',', '.', ';', ':', '?', '!' };
+            Console.WriteLine("Введите текст:");
 
-            var newText= text.Except(except).ToArray();
+            var text = Console.ReadLine();
+            var punctuation = new List<char>() { ' ', ',', '.', ';', ':', '!', '?' };
 
-            Console.WriteLine(newText);
+            if (string.IsNullOrEmpty(text))
+            {
+                Console.WriteLine("Вы ввели пустой текст");
+                return;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Текст без знаков препинания: ");
+
+            var noPunctuation = text.Except(punctuation).ToArray();
+
+            Console.WriteLine(noPunctuation);
         }
     }
 }
